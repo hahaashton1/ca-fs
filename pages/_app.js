@@ -1,10 +1,11 @@
 import '../styles/globals.css'
+import Layout from '../components/layout'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div data-theme="cupcake">
-      <Component {...pageProps} />
-    </div>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
   )
 }
 

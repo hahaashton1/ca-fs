@@ -5,7 +5,7 @@ import Papa from 'papaparse';
 export default function Home() {
 
   const [file, setFile] = useState(null);
-  //const fileReader = new FileReader();
+  const [tableJSON, setTableJSON] = useState(null);
 
   const handleImport = (e) => {
     setFile(e.target.files[0]);
@@ -21,6 +21,7 @@ export default function Home() {
         const data = event.target.result;
         //console.log(data);
         const csv = Papa.parse(data, {header: true});
+        setTableJSON(csv.data);
         // This works
         console.log(csv);
       }
@@ -48,6 +49,30 @@ export default function Home() {
                   <button className="btn" onClick={(e)=>{handleSubmit(e);}}>Upload</button>
                 </div>
               </div>
+            </div>
+            <div>
+              {/* if tableJSON is not null, then display table */}
+
+              {tableJSON && (
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th>UT-Code</th>
+                      <th>Application</th>
+                      <th>Profile</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableJSON.map((row, index) => (
+                      <tr key={index}>
+                        <td>{row.utcode}</td>
+                        <td>{row.application}</td>
+                        <td>{row.profile}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
