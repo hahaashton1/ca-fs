@@ -3,7 +3,7 @@ import Footer from "./footer";
 
 const Layout = ({children}) => {
   return (
-    <div className="flex flex-col h-screen justify-between" data-theme="cupcake">
+    <div className="flex flex-col h-screen justify-between" data-theme="lemonade">
         <Navbar />
             <main>{children}</main>
         <Footer />
