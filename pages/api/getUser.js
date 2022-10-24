@@ -9,6 +9,11 @@ export default async (req, res) => {
                 //utcode: req.query.utcode
                 //utcode: "UT46YV0"
                 utcode: { in: req.query.utcode }
+            },
+            select: {
+                utcode: true,
+                application: true,
+                profile: true,
             }
         })
         res.status(200).json(user);
