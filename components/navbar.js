@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
+  const showButton = router.pathname === "/home" ? true : false;
 
   return (
     <div className="navbar bg-primary text-primary-content">
@@ -11,9 +14,11 @@ const Navbar = () => {
         </a>
       </div>
       <div className="flex justify-end px-3">
-        <button className="btn btn-secondary">
-          <Link href="/login">Logout</Link>
-        </button>
+        {showButton && (
+          <button className="btn btn-secondary">
+            <Link href="/">Logout</Link>
+          </button>
+        )}
       </div>
     </div>
   );

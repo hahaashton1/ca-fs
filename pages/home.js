@@ -188,7 +188,7 @@ export default function Home() {
       <main>
         <div className="grid place-items-center justify-center">
           <div className="grid grid-cols-1 gap-6 content-center max-w-screen-lg">
-            <div className="card w-full bg-primary text-primary-content">
+            <div className="card w-full bg-primary text-primary-content mt-5">
               <div className="card-body px-5">
                 <h2 className="card-title">File Upload</h2>
                 <p>Please upload the file that you wish to check:</p>
@@ -213,7 +213,12 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <span className="text-lg text-center font-bold">Results</span>
+            {
+              (tableJSON || result) && 
+              ( 
+                <span className="text-lg text-center font-bold">Results</span>
+              ) 
+            }
             <div>            
               {tableJSON && result == null && (
                 <div className="block overflow-y-auto overflow-x-auto h-[50vh]">
